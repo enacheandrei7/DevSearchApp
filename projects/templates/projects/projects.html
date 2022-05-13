@@ -1,0 +1,28 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- OUTPUT DYNAMIC VALUE FROM VIEWS -->
+<p>Hello, you are on the {{page}} page</p>
+
+<!-- IF Statements -->
+{% if number > 10 %}
+<p>Number is greater than 10!</p>
+{% elif number == 10 %}
+<p>The number is 10!</p>
+{% else %}
+<p>Number is less than 10</p>
+{% endif %}
+
+<hr />
+<h1>Projects</h1>
+<ul>
+  {% for project in projects %}
+  <li>
+    <!-- In teh {% url %} tag we can put the name ('project') of the path from 
+      path('project/<str:pk>/', views.project, name="project"), -->
+    Title: <a href="{% url 'project' project.id %}"> {{project.title}}</a> --
+    {{project.description}}
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}
